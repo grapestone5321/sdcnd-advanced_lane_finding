@@ -1,10 +1,4 @@
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Advanced Lane Finding Project**
+## Writeup: Advanced Lane Finding Project
 
 The goals / steps of this project are the following:
 
@@ -35,9 +29,7 @@ The goals / steps of this project are the following:
 [image6]: ./output_images/combined_34.jpg "Output"
 
 
-
 ### Camera Calibration
-
 
 [video1]: ./output_tracked.mp4 "Video"
 
