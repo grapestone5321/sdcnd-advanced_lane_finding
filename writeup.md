@@ -23,17 +23,22 @@ The goals / steps of this project are the following:
 
 [image0]: ./camera_cal/calibration1.jpg "distorted"
 [image1]: ./output_images/calibration/undistorted_calibration1.jpg "Undistorted" 
-[image2]: ./test_images/test1.jpg "Road Transformed"
+
+[image20]: ./test_images/test1.jpg "Road Transformed"
+[image2]: ./output_images/tracked2.jpg "Road Transformed"
+
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
 
 
+
 ### Camera Calibration
 
 
 [video1]: ./output_tracked.mp4 "Video"
+
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -42,6 +47,7 @@ The goals / steps of this project are the following:
 ---
 
 ### Writeup / README
+
 
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
 
@@ -71,6 +77,9 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 #### 1. Provide an example of a distortion-corrected image.
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
+
+
+
 ![alt text][image2]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
