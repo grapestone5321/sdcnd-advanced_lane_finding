@@ -27,7 +27,8 @@ The goals / steps of this project are the following:
 [image20]: ./test_images/test1.jpg "Road Transformed"
 [image2]: ./output_images/tracked2.jpg "Road Transformed"
 
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
+[image3]: ./output_images/combined_02.jpg "Binary Example"
+
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
@@ -88,6 +89,8 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
 
+
+### PreprocessImage:
 ![alt text][image3]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
