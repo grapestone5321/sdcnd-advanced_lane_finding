@@ -1,5 +1,3 @@
-
-
 ## Writeup Template
 
 ### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
@@ -32,8 +30,9 @@ The goals / steps of this project are the following:
 [image40]: ./output_images/warped_12.jpg "Warp Example"
 [image4]: ./output_images/combined_12.jpg "Warp Example"
 
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
+[image5]: ./output_images/combined_22.jpg "Fit Visual"
+
+[image6]: ./output_images/combined_32.jpg "Output"
 
 
 
@@ -67,7 +66,7 @@ I start by preparing "object points", which will be the (x, y, z) coordinates of
 
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
-
+:
 
 ### Distorted Image:
 ![alt text][image0]
@@ -81,7 +80,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 
-### Original Image
+### Original Image:
 ![alt text][image20]
 
 ### Undistorted Image:
@@ -134,16 +133,20 @@ I verified that my perspective transform was working as expected by drawing the 
 
 Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
 
+### Finding the Lines:
 ![alt text][image5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
 I did this in lines # through # in my code in `my_other_file.py`
 
+
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
 
+
+### Identiﬁed Lane Area:
 ![alt text][image6]
 
 ---
