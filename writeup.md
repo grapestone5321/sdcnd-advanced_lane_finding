@@ -1,5 +1,5 @@
-### Distorted Image
-![alt text][image0]
+
+
 ## Writeup Template
 
 ### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
@@ -28,6 +28,11 @@ The goals / steps of this project are the following:
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
+
+
+### Camera Calibration
+
+
 [video1]: ./output_tracked.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -42,7 +47,7 @@ The goals / steps of this project are the following:
 
 You're reading it!
 
-### Camera Calibration
+
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
@@ -53,6 +58,10 @@ I start by preparing "object points", which will be the (x, y, z) coordinates of
 
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
+
+
+### Distorted Image
+![alt text][image0]
 
 ### Undistorted Image
 ![alt text][image1]
