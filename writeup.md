@@ -16,8 +16,8 @@ The goals / steps of this project are the following:
 [image0]: ./camera_cal/calibration1.jpg "distorted"
 [image1]: ./output_images/calibration/undistorted_calibration1.jpg "Undistorted" 
 
-[image20]: ./test_images/test1.jpg "Road Transformed"
-[image2]: ./output_images/tracked2.jpg "Road Transformed"
+[image20]: ./test_images/test3.jpg "Road Transformed"
+[image2]: ./output_images/tracked4.jpg "Road Transformed"
 
 [image3]: ./output_images/combined_04.jpg "Binary Example"
 
