@@ -29,8 +29,6 @@ The goals / steps of this project are the following:
 [image6]: ./output_images/combined_34.jpg "Output"
 
 
-### Camera Calibration
-
 [video1]: ./output_tracked.mp4 "Video"
 
 
