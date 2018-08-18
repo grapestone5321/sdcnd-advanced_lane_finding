@@ -25,14 +25,14 @@ The goals / steps of this project are the following:
 [image20]: ./test_images/test1.jpg "Road Transformed"
 [image2]: ./output_images/tracked2.jpg "Road Transformed"
 
-[image3]: ./output_images/combined_02.jpg "Binary Example"
+[image3]: ./output_images/combined_04.jpg "Binary Example"
 
-[image40]: ./output_images/warped_12.jpg "Warp Example"
-[image4]: ./output_images/combined_12.jpg "Warp Example"
+[image40]: ./output_images/warped_14.jpg "Warp Example"
+[image4]: ./output_images/combined_14.jpg "Warp Example"
 
-[image5]: ./output_images/combined_22.jpg "Fit Visual"
+[image5]: ./output_images/combined_24.jpg "Fit Visual"
 
-[image6]: ./output_images/combined_32.jpg "Output"
+[image6]: ./output_images/combined_34.jpg "Output"
 
 
 
