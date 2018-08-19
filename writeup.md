@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 
 [image3]: ./output_images/combined_04.jpg "Binary Example"
 
-[image40]: ./output_images/warped_14.jpg "Warp Example
+[image40]: ./output_images/warped_14.jpg "Warp Example"
 [image4]: ./output_images/combined_14.jpg "Warp Example"
 
 [image5]: ./output_images/combined_24.jpg "Fit Visual"
