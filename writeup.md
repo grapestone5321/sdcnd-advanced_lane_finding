@@ -167,7 +167,7 @@ center_diff = (camera_center-warped.shape[1]/2)*xm_per_pix
 
 ### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-This step is imolemented in the following code. The result is plotted back down onto the road such that the lane area is identified. 
+This step is implemented in the following code. The result is plotted back down onto the road such that the lane area is identified. 
 
 
 ```python
