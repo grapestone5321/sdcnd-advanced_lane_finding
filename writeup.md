@@ -38,7 +38,7 @@ Here I will consider the rubric points individually and describe how I addressed
 
 
 ### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
-The code for this step is contained in the first code cell of the IPython notebook located in "./carnd_advanced_lane_lines.ipynb".  
+The code for this step is contained in "./carnd_advanced_lane_lines.ipynb".  
 
 The OpenCV functions `cv2.findChessboardCorners` and  `cv2.drawChessboardCorners` are used to identify the locations of corners on a series of pictures of a chessboard taken from different angles. Then, using the locations of corners the camera calibration matrix and distortion coefficients are computed.
 
