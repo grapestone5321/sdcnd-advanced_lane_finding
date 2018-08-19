@@ -45,7 +45,6 @@ The OpenCV functions `cv2.findChessboardCorners` and  `cv2.drawChessboardCorners
 This distortion correction applied to the chessboard images using the `cv2.undistort()` function and obtained this result: 
 
 
-
 ### Distorted Image:
 ![alt text][image0]
 
