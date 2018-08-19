@@ -88,9 +88,7 @@ Here's an example of the output for this step.
 
 ## 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for the perspective transform takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  
-
-The source and destination points are chosen in the following manner:
+The code for the perspective transform takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  The source and destination points are chosen in the following manner:
 
 ```python
     img_size = (img.shape[1], img.shape[0])
@@ -104,7 +102,8 @@ The source and destination points are chosen in the following manner:
                       [img.shape[1]*(.5+mid_width/2),img.shape[0]*height_pct], 
                       [img.shape[1]*(.5+bot_width/2),img.shape[0]*bottom_trim],
                       [img.shape[1]*(.5-bot_width/2),img.shape[0]*bottom_trim]])
-    
+
+
     offset = img_size[0]*.25
     
     # Destination coordinates
@@ -114,16 +113,40 @@ The source and destination points are chosen in the following manner:
 The perspective transform is working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
 
+
 ### Warped Image:
 ![alt text][image40]
 
 
 ### Warped Binary Image:
 ![alt text][image4]
-
 ## 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+
+```python
+window_width = 25
+window_height = 80
+ 
+curve_centers = tracker(Mywindow_width = window_width, Mywindow_height = window_height, Mymargin = 25, My_ym = 10/720, My_xm = 4/384, Mysmooth_factor = 15)
+
+window_centroids = curve_centers.find_window_centroids(warped)
+    
+l_points = np.zeros_like(warped)
+r_points = np.zeros_like(warped)
+    
+for level in range(0,len(window_centroids)):
+    l_mask = window_mask(window_width,window_height,warped,window_centroids[level][0],level)
+    r_mask = window_mask(window_width,window_height,warped,window_centroids[level][1],level)        
+    l_points[(l_points == 255) | ((l_mask == 1))] =255
+    r_points[(r_points == 255) | ((r_mask == 1))] =255
+        
+template = np.array(r_points+l_points,np.uint8)
+zero_channel = np.zeros_like(template)
+template = np.array(cv2.merge((zero_channel,template,zero_channel)),np.uint8)
+warpage = np.array(cv2.merge((warped,warped,warped)),np.uint8)
+result = cv2.addWeighted(warpage, 1, template, 0.5, 0.0)
+```
 
 ### Finding the Lines:
 ![alt text][image5]
