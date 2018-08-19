@@ -152,7 +152,7 @@ result = cv2.addWeighted(warpage, 1, template, 0.5, 0.0)
 
 ## 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-The radius of curvature of the lane and the position of the vehicle with respect to center are calculated.
+Using the following code, the radius of curvature of the lane and the position of the vehicle with respect to center are calculated.
 
 ```python
 ym_per_pix = curve_centers.ym_per_pix
