@@ -94,7 +94,7 @@ The code for the perspective transform takes as inputs an image (`img`), as well
 img_size = (img.shape[1], img.shape[0])
 bot_width = .76
 mid_width = .08
-height_pct = .62
+At this point I was able to use the combined binary image to isolate only the pixels belonging to lane lines. height_pct = .62
 bottom_trim = .935
     
 # Source coordinates
@@ -112,7 +112,7 @@ dst = np.float32([[offset, 0], [img_size[0]-offset, 0], [img_size[0]-offset, img
 
 The perspective transform is working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-
+Transformed images are provided. 
 
 ### Warped Image:
 ![alt text][image40]
@@ -122,7 +122,7 @@ The perspective transform is working as expected by drawing the `src` and `dst` 
 ![alt text][image4]
 ## 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Using the warped binary image and `class tracker()`,  lane-line pixels are identified and fit their positions with a polynomial are fit.
 
 ```python
 window_width = 25
@@ -135,8 +135,7 @@ window_centroids = curve_centers.find_window_centroids(warped)
 l_points = np.zeros_like(warped)
 r_points = np.zeros_like(warped)
     
-for level in range(0,len(window_centroids)):
-    l_mask = window_mask(window_width,window_height,warped,window_centroids[level][0],level)
+for level in range(0,len(window_centroids)):    l_mask = window_mask(window_width,window_height,warped,window_centroids[level][0],level)
     r_mask = window_mask(window_width,window_height,warped,window_centroids[level][1],level)        
     l_points[(l_points == 255) | ((l_mask == 1))] =255
     r_points[(r_points == 255) | ((r_mask == 1))] =255
@@ -153,14 +152,25 @@ result = cv2.addWeighted(warpage, 1, template, 0.5, 0.0)
 
 ## 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+The radius of curvature of the lane and the position of the vehicle with respect to center are calculated.
+
+```python
+ym_per_pix = curve_centers.ym_per_pix
+xm_per_pix = curve_centers.xm_per_pix
+    
+curve_fit_cr = np.polyfit(np.array(res_yvals,np.float32)*ym_per_pix, np.array(leftx,np.float32)*xm_per_pix,2)
+curverad = ((1 + (2*curve_fit_cr[0]*yvals[-1]*ym_per_pix + curve_fit_cr[1])++2)**1.5) /np.absolute(2*curve_fit_cr[0])
+   
+camera_center = (left_fitx[-1] + right_fitx[-1])/2
+center_diff = (camera_center-warped.shape[1]/2)*xm_per_pix
+```
 
 
 ### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
 I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  
 
-Here is an example of my result on a test image:
+Here is an example of the result on a image:
 
 
 ### Identiﬁed Lane Area:
@@ -172,7 +182,7 @@ Here is an example of my result on a test image:
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./output_tracked.mp4)
+Here's a [link to the project video result](./output_tracked.mp4)
 
 ---
 
