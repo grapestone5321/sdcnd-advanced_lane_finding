@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 
 [image3]: ./output_images/combined_04.jpg "Binary Example"
 
-[image40]: ./output_images/warped_14.jpg "Warp Example"
+[image40]: ./output_images/warped_14.jpg "Warp Example
 [image4]: ./output_images/combined_14.jpg "Warp Example"
 
 [image5]: ./output_images/combined_24.jpg "Fit Visual"
@@ -28,10 +28,10 @@ The goals / steps of this project are the following:
 [image6]: ./output_images/combined_34.jpg "Output"
 
 
-t
+
 [video1]: ./output_tracked.mp4 "Video"
 
-### [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points:
+o### [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points:
 Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
@@ -71,8 +71,17 @@ The camera calibration matrix and distortion coefficients are used with `cv2.und
 
 ## 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+A combination of color and gradient thresholds are used to generate a binary image.  
 
+```python
+img = cv2.undistort(img, mtx, dist, None, mtx)
+preprocessImage = np.zeros_like(img[:,:])
+gradx = abs_sobel_thresh(img, orient='x', thresh=(12,255)) 
+grady = abs_sobel_thresh(img, orient='y', thresh=(25,255)) 
+c_binary = color_threshold(img, sthresh=(100,255), vthresh=(50,255)) 
+preprocessImage[((gradx == 1) & (grady == 1) | (c_binary == 1) )] = 255
+```
+Here's an example of the output for this step.
 
 ### PreprocessImage:
 ![alt text][image3]
