@@ -91,23 +91,23 @@ Here's an example of the output for this step.
 The code for the perspective transform takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  The source and destination points are chosen in the following manner:
 
 ```python
-    img_size = (img.shape[1], img.shape[0])
-    bot_width = .76
-    mid_width = .08
-    height_pct = .62
-    bottom_trim = .935
+img_size = (img.shape[1], img.shape[0])
+bot_width = .76
+mid_width = .08
+height_pct = .62
+bottom_trim = .935
     
-    # Source coordinates
-    src = np.float32([[img.shape[1]*(.5-mid_width/2),img.shape[0]*height_pct],
-                      [img.shape[1]*(.5+mid_width/2),img.shape[0]*height_pct], 
-                      [img.shape[1]*(.5+bot_width/2),img.shape[0]*bottom_trim],
-                      [img.shape[1]*(.5-bot_width/2),img.shape[0]*bottom_trim]])
+# Source coordinates
+src = np.float32([[img.shape[1]*(.5-mid_width/2),img.shape[0]*height_pct],
+                  [img.shape[1]*(.5+mid_width/2),img.shape[0]*height_pct], 
+                  [img.shape[1]*(.5+bot_width/2),img.shape[0]*bottom_trim],
+                  [img.shape[1]*(.5-bot_width/2),img.shape[0]*bottom_trim]])
 
 
-    offset = img_size[0]*.25
+offset = img_size[0]*.25
     
-    # Destination coordinates
-    dst = np.float32([[offset, 0], [img_size[0]-offset, 0], [img_size[0]-offset, img_size[1]], [offset, img_size[1]]])
+# Destination coordinates
+dst = np.float32([[offset, 0], [img_size[0]-offset, 0], [img_size[0]-offset, img_size[1]], [offset, img_size[1]]])
 ```
 
 The perspective transform is working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
