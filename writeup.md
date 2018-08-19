@@ -43,7 +43,7 @@ The code for this step is contained in the first code cell of the IPython notebo
 
 The OpenCV functions `cv2.findChessboardCorners` and  `cv2.drawChessboardCorners` are used to identify the locations of corners on a series of pictures of a chessboard taken from different angles. Then, using the locations of corners the camera calibration matrix and distortion coefficients are computed.
 
-This distortion correction applied to the test image using the `cv2.undistort()` function and obtained this result: 
+This distortion correction applied to the chessboard images using the `cv2.undistort()` function and obtained this result: 
 
 
 
@@ -58,8 +58,8 @@ This distortion correction applied to the test image using the `cv2.undistort()`
 
 #### 1. Provide an example of a distortion-corrected image.
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-Finally, the camera calibration matrix and distortion coefficients were used with the OpenCV function undistort to remove distortion from highway driving images.
+
+The camera calibration matrix and distortion coefficients are used with `cv2.undistort` function to undist from highway driving images.
 
 
 ### Original Image:
