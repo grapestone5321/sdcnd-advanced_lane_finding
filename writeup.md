@@ -138,13 +138,14 @@ r_points = np.zeros_like(warped)
 for level in range(0,len(window_centroids)):    l_mask = window_mask(window_width,window_height,warped,window_centroids[level][0],level)
     r_mask = window_mask(window_width,window_height,warped,window_centroids[level][1],level)        
     l_points[(l_points == 255) | ((l_mask == 1))] =255
-    r_points[(r_points == 255) | ((r_mask == 1))] =255
+The result is plotted back down onto the road such that the lane area is identified.    r_points[(r_points == 255) | ((r_mask == 1))] =255
         
 template = np.array(r_points+l_points,np.uint8)
 zero_channel = np.zeros_like(template)
 template = np.array(cv2.merge((zero_channel,template,zero_channel)),np.uint8)
 warpage = np.array(cv2.merge((warped,warped,warped)),np.uint8)
 result = cv2.addWeighted(warpage, 1, template, 0.5, 0.0)
+
 ```
 
 ### Finding the Lines:
@@ -155,6 +156,7 @@ result = cv2.addWeighted(warpage, 1, template, 0.5, 0.0)
 Using the following code, the radius of curvature of the lane and the position of the vehicle with respect to center are calculated.
 
 ```python
+
 ym_per_pix = curve_centers.ym_per_pix
 xm_per_pix = curve_centers.xm_per_pix
     
@@ -168,10 +170,41 @@ center_diff = (camera_center-warped.shape[1]/2)*xm_per_pix
 
 ### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  
+This step is imolemented in the following code. The result is plotted back down onto the road such that the lane area is identified. 
 
-Here is an example of the result on a image:
 
+```python
+yvals = range(0,warped.shape[0])
+    
+res_yvals = np.arange(warped.shape[0]-(window_height/2),0,-window_height)
+    left_fit = np.polyfit(res_yvals, leftx, 2)
+left_fitx = left_fit[0]*yvals*yvals + left_fit[1]*yvals + left_fit[2]
+left_fitx = np.array(left_fitx,np.int32)
+    
+right_fit = np.polyfit(res_yvals, rightx, 2)
+right_fitx = right_fit[0]*yvals*yvals + right_fit[1]*yvals + right_fit[2]
+right_fitx = np.array(right_fitx,np.int32)
+    
+left_lane = np.array(list(zip(np.concatenate((left_fitx-window_width/2,left_fitx[::-1]+window_width/2), axis=0),np.concatenate((yvals,yvals[::-1]),axis=0))),np.int32)
+right_lane = np.array(list(zip(np.concatenate((right_fitx-window_width/2,right_fitx[::-1]+window_width/2), axis=0),np.concatenate((yvals,yvals[::-1]),axis=0))),np.int32)
+inner_lane = np.array(list(zip(np.concatenate((left_fitx+window_width/2,right_fitx[::-1]-window_width/2), axis=0),np.concatenate((yvals,yvals[::-1]),axis=0))),np.int32)
+    
+road = np.zeros_like(img)
+road_bkg = np.zeros_like(img)
+cv2.fillPoly(road,[left_lane],color=[255, 0, 0])
+cv2.fillPoly(road,[right_lane],color=[0, 0, 255])
+cv2.fillPoly(road,[inner_lane],color=[0, 255, 0])
+cv2.fillPoly(road_bkg,[left_lane],color=[255, 255, 255])
+cv2.fillPoly(road_bkg,[right_lane],color=[255, 255, 255])  
+    
+road_warped = cv2.warpPerspective(road,Minv,img_size,flags=cv2.INTER_LINEAR)
+road_warped_bkg = cv2.warpPerspective(road_bkg,Minv,img_size,flags=cv2.INTER_LINEAR)
+    
+base = cv2.addWeighted(img, 1.0, road_warped_bkg, -1.0, 0.0)
+result = cv2.addWeighted(base, 1.0, road_warped, 0.7, 0.0)
+```
+
+Here is an example of the result on a image.  
 
 ### Identiﬁed Lane Area:
 ![alt text][image6]
