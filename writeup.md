@@ -109,8 +109,6 @@ offset = img_size[0]*.25
 dst = np.float32([[offset, 0], [img_size[0]-offset, 0], [img_size[0]-offset, img_size[1]], [offset, img_size[1]]])
 ```
 
-The perspective transform is working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
-
 Transformed images are provided. 
 
 ### Warped Image:
