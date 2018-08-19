@@ -220,7 +220,7 @@ Here's a [link to the project video result](./output_tracked.mp4)
 
 ### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-The pipeline almost works well. It might be because the road is in basically ideal conditions on a fine weather. But sometimes it fails. For example the other car is on next lane to the own car. The pipeline needs to be refined to work in such environments.
+The pipeline almost works well. It might be because the road is in basically ideal conditions on a fine weather. But sometimes it fails. For example, it fails when the other car is on next lane to the own car. The pipeline needs to be refined to work in such environments.
 
 For further research, it is nesesarry to continue to refine the pipeline to work in various conditions/environments.
 
