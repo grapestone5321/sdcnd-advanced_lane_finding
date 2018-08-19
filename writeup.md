@@ -186,7 +186,7 @@ right_fitx = right_fit[0]*yvals*yvals + right_fit[1]*yvals + right_fit[2]
 right_fitx = np.array(right_fitx,np.int32)
     
 left_lane = np.array(list(zip(np.concatenate((left_fitx-window_width/2,left_fitx[::-1]+window_width/2), axis=0),np.concatenate((yvals,yvals[::-1]),axis=0))),np.int32)
-right_lane = np.array(list(zip(np.concatenate((right_fitx-window_width/2,right_fitx[::-1]+window_width/2), axis=0),np.concatenate((yvals,yvals[::-1]),axis=0))),np.int32)
+.right_lane = np.array(list(zip(np.concatenate((right_fitx-window_width/2,right_fitx[::-1]+window_width/2), axis=0),np.concatenate((yvals,yvals[::-1]),axis=0))),np.int32)
 inner_lane = np.array(list(zip(np.concatenate((left_fitx+window_width/2,right_fitx[::-1]-window_width/2), axis=0),np.concatenate((yvals,yvals[::-1]),axis=0))),np.int32)
     
 road = np.zeros_like(img)
@@ -223,19 +223,7 @@ Here's a [link to the project video result](./output_tracked.mp4)
 
 ### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about:
+The pipeline almost works well it might be because the road is in basically ideal conditions on a fine weather. But sometimes it fails. For example the other car is on next lane to the own car. The pipeline needs to be refined to work in such environments.
 
-the approach I took, 
-
-what techniques I used, 
-
-what worked and 
-
-why, where the pipeline might fail and 
-
-how I might improve it if I were going to pursue this project further. 
-
-
-
-
+For further research, it is nesesarry to continue to refine the pipeline to work in various conditions/environments.
 
