@@ -28,9 +28,8 @@ The goals / steps of this project are the following:
 [image6]: ./output_images/combined_34.jpg "Output"
 
 
-
+t
 [video1]: ./output_tracked.mp4 "Video"
-
 
 ### [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points:
 Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -59,7 +58,8 @@ This distortion correction applied to the chessboard images using the `cv2.undis
 #### 1. Provide an example of a distortion-corrected image.
 
 
-The camera calibration matrix and distortion coefficients are used with `cv2.undistort` function to undist from highway driving images.
+The camera calibration matrix and distortion coefficients are used with `cv2.undistort` function to undistort from highway driving images.
+
 
 
 ### Original Image:
