@@ -42,7 +42,7 @@ The code for this project is contained in "./carnd_advanced_lane_lines.ipynb".
 
 The OpenCV functions `cv2.findChessboardCorners` and  `cv2.drawChessboardCorners` are used to identify the locations of corners on a series of pictures of a chessboard taken from different angles. Then, using the locations of corners the camera calibration matrix and distortion coefficients are computed.
 
-This distortion correction applied to the chessboard images using the `cv2.undistort()` function and obtained this result: 
+This distortion correction is applied to the chessboard images using the `cv2.undistort()` function and obtained this result: 
 
 
 ### Distorted Image:
