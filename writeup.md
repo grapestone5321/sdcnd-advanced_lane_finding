@@ -28,6 +28,7 @@ The goals / steps of this project are the following:
 [image6]: ./output_images/combined_34.jpg "Output"
 
 
+
 [video1]: ./output_tracked.mp4 "Video"
 
 
@@ -56,7 +57,10 @@ This distortion correction applied to the test image using the `cv2.undistort()`
 ### Pipeline (single images)
 
 #### 1. Provide an example of a distortion-corrected image.
+
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
+Finally, the camera calibration matrix and distortion coefficients were used with the OpenCV function undistort to remove distortion from highway driving images.
+
 
 ### Original Image:
 ![alt text][image20]
