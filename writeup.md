@@ -61,8 +61,7 @@ The camera calibration matrix and distortion coefficients are used with `cv2.und
 
 
 
-### Original Image:
-![alt text][image20]
+### Original Image:![alt text][image20]
 
 ### Undistorted Image:
 ![alt text][image2]
@@ -73,11 +72,10 @@ The camera calibration matrix and distortion coefficients are used with `cv2.und
 A combination of color and gradient thresholds are used to generate a binary image.  
 
 ```python
-img = cv2.undistort(img, mtx, dist, None, mtx)
-preprocessImage = np.zeros_like(img[:,:])
-gradx = abs_sobel_thresh(img, orient='x', thresh=(12,255)) 
-grady = abs_sobel_thresh(img, orient='y', thresh=(25,255)) 
-c_binary = color_threshold(img, sthresh=(100,255), vthresh=(50,255)) 
+img = cv2.undistort(img, mtx, dist, None, mtx
+preprocessImage = np.zeros_like(img[:,:])gradx = abs_sobel_thresh(img, orient='x', thresh=(10,255)) 
+grady = abs_sobel_thresh(img, orient='y', thresh=(10,255)) 
+c_binary = color_threshold(img, sthresh=(90,255), vthresh=(20,255)) 
 preprocessImage[((gradx == 1) & (grady == 1) | (c_binary == 1) )] = 255
 ```
 Here's an example of the output for this step.
@@ -91,10 +89,10 @@ The code for the perspective transform takes as inputs an image (`img`), as well
 
 ```python
 img_size = (img.shape[1], img.shape[0])
-bot_width = .76
+bot_width = .90
 mid_width = .08
-At this point I was able to use the combined binary image to isolate only the pixels belonging to lane lines. height_pct = .62
-bottom_trim = .935
+height_pct = .62
+bottom_trim = .995
     
 # Source coordinates
 src = np.float32([[img.shape[1]*(.5-mid_width/2),img.shape[0]*height_pct],
@@ -103,7 +101,7 @@ src = np.float32([[img.shape[1]*(.5-mid_width/2),img.shape[0]*height_pct],
                   [img.shape[1]*(.5-bot_width/2),img.shape[0]*bottom_trim]])
 
 
-offset = img_size[0]*.25
+offset = img_size[0]*.15
     
 # Destination coordinates
 dst = np.float32([[offset, 0], [img_size[0]-offset, 0], [img_size[0]-offset, img_size[1]], [offset, img_size[1]]])
@@ -122,16 +120,16 @@ Transformed images are provided.
 Using the warped binary image and `class tracker()`,  lane-line pixels are identified and fit their positions with a polynomial are fit.
 
 ```python
-window_width = 25
+window_width = 50
 window_height = 80
  
-curve_centers = tracker(Mywindow_width = window_width, Mywindow_height = window_height, Mymargin = 25, My_ym = 10/720, My_xm = 4/384, Mysmooth_factor = 15)
+curve_centers = tracker(Mywindow_width = window_width, Mywindow_height = window_height, Mymargin = 100, My_ym = 10/720, My_xm = 3.7/700, Mysmooth_factor = 30)
 
 window_centroids = curve_centers.find_window_centroids(warped)
     
 l_points = np.zeros_like(warped)
 r_points = np.zeros_like(warped)
-    
+   
 for level in range(0,len(window_centroids)):    l_mask = window_mask(window_width,window_height,warped,window_centroids[level][0],level)
     r_mask = window_mask(window_width,window_height,warped,window_centroids[level][1],level)        
     l_points[(l_points == 255) | ((l_mask == 1))] =255
@@ -220,7 +218,7 @@ Here's a [link to the project video result](./output_tracked.mp4)
 
 ### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-The pipeline almost works well. It might be because the road is in basically ideal conditions on a fine weather. But sometimes it fails. For example, it fails when the other car is on next lane to the own car. The pipeline needs to be refined to work in such environments.
+The pipeline almost works well. It might be because the road is in basically ideal conditions on a fine weather. But sometimes it fails. For example, it fails when shadows are on the lane. The pipeline needs to be refined to work in such environments.
 
-For further research, it is nesesarry to continue to refine the pipeline to work in various conditions/environments.
+For further research, including 'challenge_video', it is nesesarry to continue to refine the pipeline to work in various conditions/environments.
 
